@@ -98,8 +98,16 @@ class ThemesTableSeeder extends Seeder
                 'link' => 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.min.css',
             ],
             [
-                'name' => 'mdbootstrap',
+                'name' => 'Bootstrap Material Design 4.1.1',
+                'link' => 'https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css',
+            ],
+            [
+                'name' => 'mdbootstrap 4.3.1',
                 'link' => 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.1/css/mdb.min.css',
+            ],
+            [
+                'name' => 'mdbootstrap 4.5.3',
+                'link' => 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.3/css/mdb.min.css',
             ],
             [
                 'name' => 'Litera',
