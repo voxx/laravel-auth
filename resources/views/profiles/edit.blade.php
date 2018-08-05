@@ -42,7 +42,7 @@
                                                                 <div class="card-body">
                                                                     <div class="dz-preview"></div>
                                                                     {!! Form::open(array('route' => 'avatar.upload', 'method' => 'POST', 'name' => 'avatarDropzone','id' => 'avatarDropzone', 'class' => 'form single-dropzone dropzone single', 'files' => true)) !!}
-                                                                        <img id="user_selected_avatar" class="user-avatar" src="@if ($user->profile->avatar != NULL) {{ $user->profile->avatar }} @endif" alt="{{ $user->name }}">
+                                                                        <img id="user_selected_avatar" class="user-avatar" src="{{ $user->profile->avatar ? $user->profile->avatar : '/images/avatar.png' }}" alt="{{ $user->name }}">
                                                                     {!! Form::close() !!}
                                                                 </div>
                                                             </div>
@@ -61,7 +61,7 @@
                                                                 </div>
                                                                 <div class="col-6 col-xs-6 left-btn-container">
                                                                     <label class="btn btn-primary @if($user->profile->avatar_status == 1) active @endif btn-block btn-sm" data-toggle="collapse" data-target=".collapseOne.show, .collapseTwo:not(.show)">
-                                                                        <input type="radio" name="avatar_status" id="option2" autocomplete="off" value="1" @if($user->profile->avatar_status == 1) checked @endif> Use My Image
+                                                                        <input type="radio" name="avatar_status" id="option2" autocomplete="off" value="1" @if($user->profile->avatar_status == 1) checked @endif> Use Custom Image
                                                                     </label>
                                                                 </div>
                                                             </div>
