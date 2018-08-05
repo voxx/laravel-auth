@@ -138,7 +138,7 @@
                                                             {!! Form::button(
                                                                 '<i class="fa fa-fw fa-save" aria-hidden="true"></i> ' . trans('profile.submitButton'),
                                                                  array(
-                                                                    'class'             => 'btn btn-success disabled',
+                                                                    'class'             => 'btn btn-success',
                                                                     'type'              => 'button',
                                                                     'data-target'       => '#confirmForm',
                                                                     'data-modalClass'   => 'modal-success',
