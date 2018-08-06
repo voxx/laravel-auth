@@ -36,7 +36,6 @@ return [
     'labelIpEmail'           => 'Email Signup IP:',
     'labelIpEmail'           => 'Email Signup IP:',
     'labelIpConfirm'         => 'Confirmation IP:',
-    'labelIpSocial'          => 'Socialite Signup IP:',
     'labelIpAdmin'           => 'Admin Signup IP:',
     'labelIpUpdate'          => 'Last Update IP:',
     'labelDeletedAt'         => 'Deleted on',

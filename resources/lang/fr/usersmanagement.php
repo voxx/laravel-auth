@@ -26,7 +26,6 @@ return [
     'labelUpdatedAt'         => 'Modifié le :',
     'labelIpEmail'           => 'IP connexion par mail :',
     'labelIpConfirm'         => 'Confirmation IP:',
-    'labelIpSocial'          => 'IP connexion réseau social :',
     'labelIpAdmin'           => 'IP connexion admin :',
     'labelIpUpdate'          => 'Dernière IP :',
     'labelDeletedAt'         => 'Supprimer on',

@@ -23,7 +23,6 @@ class SendActivationEmail extends Notification implements ShouldQueue
     public function __construct($token)
     {
         $this->token = $token;
-        $this->onQueue('social');
     }
 
     /**

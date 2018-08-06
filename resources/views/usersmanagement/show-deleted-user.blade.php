@@ -370,25 +370,6 @@
 
             @endif
 
-            @if ($user->signup_sm_ip_address)
-
-              <div class="col-sm-5 col-xs-6 text-larger">
-                <strong>
-                  {{ trans('usersmanagement.labelIpSocial') }}
-                </strong>
-              </div>
-
-              <div class="col-sm-7">
-                <code>
-                  {{ $user->signup_sm_ip_address }}
-                </code>
-              </div>
-
-              <div class="clearfix"></div>
-              <div class="border-bottom"></div>
-
-            @endif
-
             @if ($user->admin_ip_address)
 
               <div class="col-sm-5 col-xs-6 text-larger">

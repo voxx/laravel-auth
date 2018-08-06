@@ -66,16 +66,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Build Social Relationships.
-     *
-     * @var array
-     */
-    public function social()
-    {
-        return $this->hasMany('App\Models\Social');
-    }
-
-    /**
      * User Profile Relationships.
      *
      * @var array
