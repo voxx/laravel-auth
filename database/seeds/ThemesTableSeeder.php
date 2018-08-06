@@ -24,7 +24,7 @@ class ThemesTableSeeder extends Seeder
             [
                 'name' => 'mdbootstrap 4.5.3',
                 'link' => 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.3/css/mdb.min.css',
-            ],
+            ]
 
         ];
 
