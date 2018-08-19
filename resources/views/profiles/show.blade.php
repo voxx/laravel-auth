@@ -26,7 +26,7 @@
 					</div>
 					<div class="card-body">
 
-    					<img src="@if ($user->profile->avatar_status == 1) {{ $user->profile->avatar ? $user->profile->avatar : '/images/avatar.png' }} @else {{ Gravatar::get($user->email) }} @endif" alt="{{ $user->name }}" class="user-avatar">
+    					<img src="@if ($user->profile->avatar_status == 1) {{ $user->profile->avatar ? $user->profile->avatar : '/images/avatar.png' }} @else {{ '/images/avatar.png' }} @endif" alt="{{ $user->name }}" class="user-avatar">
 
 						<dl class="user-info">
 

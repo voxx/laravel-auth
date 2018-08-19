@@ -35,7 +35,7 @@
                                                         <div id="avatar_container">
                                                             <div class="collapseOne card-collapse collapse @if($user->profile->avatar_status == 0) show @endif">
                                                                 <div class="card-body">
-                                                                    <img src="{{  Gravatar::get($user->email) }}" alt="{{ $user->name }}" class="user-avatar">
+                                                                    <img src="{{ '/images/avatar.png' }}" alt="{{ $user->name }}" class="user-avatar">
                                                                 </div>
                                                             </div>
                                                             <div class="collapseTwo card-collapse collapse @if($user->profile->avatar_status == 1) show @endif">
@@ -56,7 +56,7 @@
                                                             <div class="row" data-toggle="buttons">
                                                                 <div class="col-6 col-xs-6 right-btn-container">
                                                                     <label class="btn btn-primary @if($user->profile->avatar_status == 0) active @endif btn-block btn-sm" data-toggle="collapse" data-target=".collapseOne:not(.show), .collapseTwo.show">
-                                                                        <input type="radio" name="avatar_status" id="option1" autocomplete="off" value="0" @if($user->profile->avatar_status == 0) checked @endif> Use Gravatar
+                                                                        <input type="radio" name="avatar_status" id="option1" autocomplete="off" value="0" @if($user->profile->avatar_status == 0) checked @endif> Use Default Image
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-6 col-xs-6 left-btn-container">
