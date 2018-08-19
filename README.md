@@ -1,5 +1,5 @@
 ## Laravel-Auth
-#### Laravel-Auth is a Complete Build of Laravel 5.6 with Email Registration Verification, Social Authentication, User Roles and Permissions, User Profiles, and Admin restricted user management system. Built on Bootstrap 4.
+#### Laravel-Auth is a Complete Build of Laravel 5.6 with Email Registration Verification, User Roles and Permissions, User Profiles, and Admin restricted user management system. Built on Bootstrap 4.
 [![Build Status](https://travis-ci.org/jeremykenedy/laravel-auth.svg?branch=master)](https://travis-ci.org/jeremykenedy/laravel-auth)
 [![StyleCI](https://styleci.io/repos/44714043/shield?branch=master)](https://styleci.io/repos/44714043)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jeremykenedy/laravel-auth/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jeremykenedy/laravel-auth/?branch=master)
@@ -30,9 +30,6 @@
     - [Seeded Users](#seeded-users)
     - [Themes Seed List](#themes-seed-list)
 - [Routes](#routes)
-- [Socialite](#socialite)
-    - [Get Socialite Login API Keys](#get-socialite-login-api-keys)
-    - [Add More Socialite Logins](#add-more-socialite-logins)
 - [Other API keys](#other-api-keys)
 - [Environment File](#environment-file)
 - [Updates](#updates)
@@ -42,7 +39,7 @@
 - [Laravel Auth License](#laravel-auth-license)
 
 ### About
-Laravel 5.6 with user authentication, registration with email confirmation, social media authentication, password recovery, and captcha protection. Uses offical [Bootstrap 4](http://getbootstrap.com). This also makes full use of Controllers for the routes, templates for the views, and makes use of middleware for routing. Project can be stood up in minutes.
+Laravel 5.6 with user authentication, registration with email confirmation, password recovery, and captcha protection. Uses official [Bootstrap 4](http://getbootstrap.com). This also makes full use of Controllers for the routes, templates for the views, and makes use of middleware for routing. Project can be stood up in minutes.
 
 ### Features
 #### A [Laravel](http://laravel.com/) 5.6.x with minimal [Bootstrap](http://getbootstrap.com) 4.0.x project.
@@ -55,7 +52,6 @@ Laravel 5.6 with user authentication, registration with email confirmation, soci
 |Uses [Artisan](http://laravel.com/docs/5.6/artisan) to manage database migration, schema creations, and create/publish page controller templates|
 |Dependencies are managed with [COMPOSER](https://getcomposer.org/)|
 |Laravel Scaffolding **User** and **Administrator Authentication**.|
-|User [Socialite Logins](https://github.com/laravel/socialite) ready to go - See API list used below|
 |[Google Maps API v3](https://developers.google.com/maps/documentation/javascript/) for User Location lookup and Geocoding|
 |CRUD (Create, Read, Update, Delete) Themes Management|
 |CRUD (Create, Read, Update, Delete) User Management|
@@ -71,7 +67,6 @@ Laravel 5.6 with user authentication, registration with email confirmation, soci
 |Makes us of [Password Strength Meter](https://github.com/elboletaire/password-strength-meter)|
 |Makes use of [hideShowPassword](https://github.com/cloudfour/hideShowPassword)|
 |User Avatar Image AJAX Upload with [Dropzone.js](http://www.dropzonejs.com/#configuration)|
-|User Gravatar using [Gravatar API](https://github.com/creativeorange/gravatar)|
 |User Password Reset via Email Token|
 |User Login with remember password|
 |User [Roles/ACL Implementation](https://github.com/jeremykenedy/laravel-roles)|
@@ -210,8 +205,6 @@ php artisan vendor:publish --tag=laravel2step
 |        | POST                                   | register                              |                                  | App\Http\Controllers\Auth\RegisterController@register                                             | web,guest                                       |
 |        | GET|HEAD                               | routes                                |                                  | App\Http\Controllers\AdminDetailsController@listRoutes                                            | web,auth,activated,role:admin,activity,twostep  |
 |        | POST                                   | search-users                          | search-users                     | App\Http\Controllers\UsersManagementController@search                                             | web,auth,activated,role:admin,activity,twostep  |
-|        | GET|HEAD                               | social/handle/{provider}              | social.handle                    | App\Http\Controllers\Auth\SocialController@getSocialHandle                                        | web,activity                                    |
-|        | GET|HEAD                               | social/redirect/{provider}            | social.redirect                  | App\Http\Controllers\Auth\SocialController@getSocialRedirect                                      | web,activity                                    |
 |        | POST                                   | themes                                | themes.store                     | App\Http\Controllers\ThemesManagementController@store                                             | web,auth,activated,role:admin,activity,twostep  |
 |        | GET|HEAD                               | themes                                | themes                           | App\Http\Controllers\ThemesManagementController@index                                             | web,auth,activated,role:admin,activity,twostep  |
 |        | GET|HEAD                               | themes/create                         | themes.create                    | App\Http\Controllers\ThemesManagementController@create                                            | web,auth,activated,role:admin,activity,twostep  |
@@ -235,64 +228,6 @@ php artisan vendor:publish --tag=laravel2step
 |        | POST                                   | verification/verify                   | laravel2step::verify             | jeremykenedy\laravel2step\App\Http\Controllers\TwoStepController@verify                           | web,auth,Closure                                |
 +--------+----------------------------------------+---------------------------------------+----------------------------------+---------------------------------------------------------------------------------------------------+-------------------------------------------------+
 ```
-
-### Socialite
-
-#### Get Socialite Login API Keys:
-* [Google Captcha API](https://www.google.com/recaptcha/admin#list)
-* [Facebook API](https://developers.facebook.com/)
-* [Twitter API](https://apps.twitter.com/)
-* [Google &plus; API](https://console.developers.google.com/)
-* [GitHub API](https://github.com/settings/applications/new)
-* [YouTube API](https://developers.google.com/youtube/v3/getting-started)
-* [Twitch TV API](http://www.twitch.tv/kraken/oauth2/clients/new)
-* [Instagram API](https://instagram.com/developer/register/)
-* [37 Signals API](https://github.com/basecamp/basecamp-classic-api)
-
-#### Add More Socialite Logins
-* See full list of providers: [http://socialiteproviders.github.io](http://socialiteproviders.github.io/#providers)
-###### **Steps**:
-  1. Go to [http://socialiteproviders.github.io](http://socialiteproviders.github.io/providers/twitch/) and select the provider to be added.
-  2. From the projects root folder in terminal run composer command to get the needed package.
-     * Example:
-
-      ```
-         composer require socialiteproviders/twitch
-      ```
-
-  3. From the projects root folder run ```composer update```
-  4. Add the service provider to ```/config/services.php```
-     * Example:
-
-     ```
-        'twitch' => [
-            'client_id'   => env('TWITCH_KEY'),
-            'client_secret' => env('TWITCH_SECRET'),
-            'redirect'    => env('TWITCH_REDIRECT_URI'),
-        ],
-     ```
-
-  5. Add the API credentials to ``` /.env  ```
-     * Example:
-
-      ```
-         TWITCH_KEY=YOURKEYHERE
-         TWITCH_SECRET=YOURSECRETHERE
-         TWITCH_REDIRECT_URI=http://YOURWEBSITEURL.COM/social/handle/twitch
-      ```
-
-  6. Add the social media login link:
-      * Example:
-      In file ```/resources/views/auth/login.blade.php``` add ONE of the following:
-         * Conventional HTML:
-        ```
-        <a href="{{ route('social.redirect', ['provider' => 'twitch']) }}" class="btn btn-lg btn-primary btn-block twitch">Twitch</a>
-        ```
-         * Use Laravel HTML Facade with [Laravel Collective](https://laravelcollective.com/):
-
-        ```
-        {!! HTML::link(route('social.redirect', ['provider' => 'twitch']), 'Twitch', array('class' => 'btn btn-lg btn-primary btn-block twitch')) !!}
-        ```
 
 ### Other API keys
 * [Google Maps API v3 Key](https://developers.google.com/maps/documentation/javascript/get-api-key#get-an-api-key)
@@ -382,13 +317,6 @@ LARAVEL_2STEP_APP_CSS="css/app.css"
 LARAVEL_2STEP_BOOTSTRAP_CSS_CDN_ENABLED=true
 LARAVEL_2STEP_BOOTSTRAP_CSS_CDN="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 
-DEFAULT_GRAVATAR_SIZE=80
-DEFAULT_GRAVATAR_FALLBACK=http://c1940652.r52.cf0.rackcdn.com/51ce28d0fb4f442061000000/Screen-Shot-2013-06-28-at-5.22.23-PM.png
-DEFAULT_GRAVATAR_SECURE=false
-DEFAULT_GRAVATAR_MAX_RATING=g
-DEFAULT_GRAVATAR_FORCE_DEFAULT=false
-DEFAULT_GRAVATAR_FORCE_EXTENSION=jpg
-
 DROPZONE_JS_CDN=https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js
 
 LARAVEL_LOGGER_DATABASE_CONNECTION=mysql
@@ -420,51 +348,10 @@ LARAVEL_LOGGER_BOOTSTRAP_CSS_CDN_URL=https://maxcdn.bootstrapcdn.com/bootstrap/3
 GOOGLEMAPS_API_STATUS=true
 GOOGLEMAPS_API_KEY=YOURGOOGLEMAPSkeyHERE
 
-# https://console.developers.google.com/ - NEED OAUTH CREDS
-GOOGLE_ID=YOURGOOGLEPLUSidHERE
-GOOGLE_SECRET=YOURGOOGLEPLUSsecretHERE
-GOOGLE_REDIRECT=http://yourwebsiteURLhere.com/social/handle/google
-
 # https://www.google.com/recaptcha/admin#list
 ENABLE_RECAPTCHA=true
 RE_CAP_SITE=YOURGOOGLECAPTCHAsitekeyHERE
 RE_CAP_SECRET=YOURGOOGLECAPTCHAsecretHERE
-
-# https://developers.facebook.com/
-FB_ID=YOURFACEBOOKidHERE
-FB_SECRET=YOURFACEBOOKsecretHERE
-FB_REDIRECT=http://yourwebsiteURLhere.com/social/handle/facebook
-
-# https://apps.twitter.com/
-TW_ID=YOURTWITTERidHERE
-TW_SECRET=YOURTWITTERkeyHERE
-TW_REDIRECT=http://yourwebsiteURLhere.com/social/handle/twitter
-
-# https://github.com/settings/applications/new
-GITHUB_ID=YOURIDHERE
-GITHUB_SECRET=YOURSECRETHERE
-GITHUB_URL=https://larablog.io/social/handle/github
-
-# https://developers.google.com/youtube/v3/getting-started
-YOUTUBE_KEY=YOURKEYHERE
-YOUTUBE_SECRET=YOURSECRETHERE
-YOUTUBE_REDIRECT_URI=https://larablog.io/social/handle/youtube
-
-# http://www.twitch.tv/kraken/oauth2/clients/new
-TWITCH_KEY=YOURKEYHERE
-TWITCH_SECRET=YOURSECRETHERE
-TWITCH_REDIRECT_URI=http://laravel-authentication.local/social/handle/twitch
-
-# https://instagram.com/developer/register/
-INSTAGRAM_KEY=YOURKEYHERE
-INSTAGRAM_SECRET=YOURSECRETHERE
-INSTAGRAM_REDIRECT_URI=http://laravel-authentication.local/social/handle/instagram
-
-# https://basecamp.com/
-# https://github.com/basecamp/basecamp-classic-api
-37SIGNALS_KEY=YOURKEYHERE
-37SIGNALS_SECRET=YOURSECRETHERE
-37SIGNALS_REDIRECT_URI=http://laravel-authentication.local/social/handle/37signals
 
 ```
 
@@ -502,7 +389,6 @@ INSTAGRAM_REDIRECT_URI=http://laravel-authentication.local/social/handle/instagr
 * Added [Laravel Debugger](https://github.com/barryvdh/laravel-debugbar) with Service Provider to manage status in `.env` file.
 * Updated Capture IP not found IP address
 * Added User Avatar Image AJAX Upload with [Dropzone.js](http://www.dropzonejs.com/#configuration)
-* Added User Gravatar using Gravatar API
 * Added Themes Management.
 * Add user profiles with seeded list and global view
 * Major overhaul on Laravel 5.4
@@ -579,7 +465,6 @@ laravel-auth
 │   │   │   │   ├── LoginController.php
 │   │   │   │   ├── RegisterController.php
 │   │   │   │   ├── ResetPasswordController.php
-│   │   │   │   └── SocialController.php
 │   │   │   ├── Controller.php
 │   │   │   ├── ProfilesController.php
 │   │   │   ├── RestoreUserController.php
@@ -610,7 +495,6 @@ laravel-auth
 │   ├── Models
 │   │   ├── Activation.php
 │   │   ├── Profile.php
-│   │   ├── Social.php
 │   │   ├── Theme.php
 │   │   └── User.php
 │   ├── Notifications
@@ -648,7 +532,6 @@ laravel-auth
 │   ├── debugbar.php
 │   ├── exceptions.php
 │   ├── filesystems.php
-│   ├── gravatar.php
 │   ├── hashing.php
 │   ├── laravel2step.php
 │   ├── laravelPhpInfo.php
@@ -673,7 +556,6 @@ laravel-auth
 │   │   ├── 2016_01_26_115212_create_permissions_table.php
 │   │   ├── 2016_01_26_115523_create_permission_role_table.php
 │   │   ├── 2016_02_09_132439_create_permission_user_table.php
-│   │   ├── 2017_03_09_082449_create_social_logins_table.php
 │   │   ├── 2017_03_09_082526_create_activations_table.php
 │   │   ├── 2017_03_20_213554_create_themes_table.php
 │   │   ├── 2017_03_21_042918_create_profiles_table.php
@@ -757,7 +639,6 @@ laravel-auth
 │   │   │   ├── passwords.php
 │   │   │   ├── permsandroles.php
 │   │   │   ├── profile.php
-│   │   │   ├── socials.php
 │   │   │   ├── themes.php
 │   │   │   ├── titles.php
 │   │   │   ├── usersmanagement.php
@@ -771,7 +652,6 @@ laravel-auth
 │   │       ├── passwords.php
 │   │       ├── permsandroles.php
 │   │       ├── profile.php
-│   │       ├── socials.php
 │   │       ├── titles.php
 │   │       ├── usersmanagement.php
 │   │       └── validation.php
@@ -813,8 +693,6 @@ laravel-auth
 │       │   ├── form-status.blade.php
 │       │   ├── nav.blade.php
 │       │   ├── search-users-form.blade.php
-│       │   ├── socials-icons.blade.php
-│       │   ├── socials.blade.php
 │       │   ├── status-panel.blade.php
 │       │   └── status.blade.php
 │       ├── profiles

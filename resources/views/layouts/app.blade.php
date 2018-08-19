@@ -10,14 +10,8 @@
 
         <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('app.name', Lang::get('titles.app')) }}</title>
         <meta name="description" content="">
-        <meta name="author" content="Jeremy Kenedy">
+        <meta name="author" content="{{ config('settings.author') }}">
         <link rel="shortcut icon" href="/favicon.ico">
-
-        {{-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --}}
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         {{-- Fonts --}}
         @yield('template_linked_fonts')
@@ -32,7 +26,7 @@
 
             @if (Auth::User() && (Auth::User()->profile) && (Auth::User()->profile->avatar_status == 0))
                 .user-avatar-nav {
-                    background: url({{ '/images/avatar.png' }}) 50% 50% no-repeat;
+                    background: url({{ url('/images/avatar.png') }}) 50% 50% no-repeat;
                     background-size: auto 100%;
                 }
             @endif

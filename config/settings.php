@@ -3,9 +3,14 @@
 return [
 
     /*
-     * Is email activation required
+     * Application Project Version
      */
     'app_project_version' => env('APP_PROJECT_VERSION'),
+
+    /*
+     * Application Author
+     */
+    'author' => env('APP_AUTHOR'),
 
     /*
      * Is email activation required
@@ -13,12 +18,12 @@ return [
     'activation' => env('ACTIVATION', false),
 
     /*
-     * Is email activation required
+     * Email activation time limit allowed
      */
     'timePeriod' => env('ACTIVATION_LIMIT_TIME_PERIOD', 24),
 
     /*
-     * Is email activation required
+     * Email activation maximum attempts allowed
      */
     'maxAttempts' => env('ACTIVATION_LIMIT_MAX_ATTEMPTS', 3),
 
