@@ -150,7 +150,7 @@ php artisan vendor:publish --tag=laravel2step
 
 ##### Themes Seed List
   * [ThemesTableSeeder](https://github.com/jeremykenedy/laravel-auth/blob/master/database/seeds/ThemesTableSeeder.php)
-  * NOTE: A lot of themes do not render the greated on Bootstrap 4 since their core was built to override Bootstrap 4. These will be updated soon and ones that do not render well will be removed from the seed. In the mean time you can remove them from the seed or manaully from the UI or database.
+
 
 ### Routes
 
