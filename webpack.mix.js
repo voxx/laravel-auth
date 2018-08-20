@@ -2,6 +2,20 @@ let mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
+ | Remove momentJS extra language dependencies
+ |--------------------------------------------------------------------------
+ |
+ | https://laracasts.com/discuss/channels/elixir/laravel-mix-prevent-momentjs-locales
+ */
+ const webpack = require('webpack');
+ mix.webpackConfig({
+   plugins: [
+     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+   ]
+ })
+
+/*
+ |--------------------------------------------------------------------------
  | Mix Asset Management
  |--------------------------------------------------------------------------
  |
