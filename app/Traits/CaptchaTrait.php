@@ -2,14 +2,19 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Facades\Input;
 use ReCaptcha\ReCaptcha;
+use Request;
 
 trait CaptchaTrait
 {
+    /**
+     * Check Google Captcha Passed or Failed.
+     *
+     * @return bool
+     */
     public function captchaCheck()
     {
-        $response = Input::get('g-recaptcha-response');
+        $response = Request::get('g-recaptcha-response');
         $remoteip = $_SERVER['REMOTE_ADDR'];
         $secret = config('settings.reCaptchSecret');
 

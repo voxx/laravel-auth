@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
         {{-- CSRF Token --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title') | @endif {{ config('app.name', Lang::get('titles.app')) }}</title>
+        <title>@hasSection('template_title')@yield('template_title') | @endif {{ config('app.name', Lang::get('titles.app')) }}</title>
         <meta name="description" content="">
         <meta name="author" content="{{ config('settings.author') }}">
         <link rel="shortcut icon" href="/favicon.ico">
@@ -45,7 +45,7 @@
         @endif
 
         @yield('head')
-
+        @include('scripts.ga-analytics')
     </head>
     <body>
         <div id="app">

@@ -49,7 +49,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {!! Form::model($user->profile, ['method' => 'PATCH', 'route' => ['profile.update', $user->name],  'class' => 'form-horizontal', 'role' => 'form', 'enctype' => 'multipart/form-data'  ]) !!}
+                                                {!! Form::model($user->profile, ['method' => 'PATCH', 'route' => ['profile.update', $user->name], 'id' => 'user_profile_form', 'class' => 'form-horizontal', 'role' => 'form', 'enctype' => 'multipart/form-data']) !!}
                                                     {{ csrf_field() }}
                                                     <div class="row">
                                                         <div class="col-10 offset-1 col-sm-10 offset-sm-1 mb-1">
@@ -124,7 +124,7 @@
                                                     <div class="margin-bottom-2 form-group has-feedback {{ $errors->has('github_username') ? ' has-error ' : '' }}">
                                                         {!! Form::label('github_username', trans('profile.label-github_username') , array('class' => 'col-12 control-label')); !!}
                                                         <div class="col-12">
-                                                            {!! Form::text('github_username', old('github_username'), array('id' => 'github_username', 'class' => 'form-control', 'placeholder' => trans('profile.ph-twitter_username'))) !!}
+                                                            {!! Form::text('github_username', old('github_username'), array('id' => 'github_username', 'class' => 'form-control', 'placeholder' => trans('profile.ph-github_username'))) !!}
                                                             <span class="glyphicon glyphicon-pencil form-control-feedback" aria-hidden="true"></span>
                                                             @if ($errors->has('github_username'))
                                                                 <span class="help-block">
@@ -133,12 +133,13 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <div class="col-12 offset-sm-4">
+                                                    <div class="form-group margin-bottom-2">
+                                                        <div class="col-12">
                                                             {!! Form::button(
                                                                 '<i class="fa fa-fw fa-save" aria-hidden="true"></i> ' . trans('profile.submitButton'),
                                                                  array(
-                                                                    'class'             => 'btn btn-success',
+                                                                    'id'                => 'confirmFormSave',
+                                                                    'class'             => 'btn btn-success disabled',
                                                                     'type'              => 'button',
                                                                     'data-target'       => '#confirmForm',
                                                                     'data-modalClass'   => 'modal-success',
@@ -238,7 +239,7 @@
                                                             {!! Form::button(
                                                                 '<i class="fa fa-fw fa-save" aria-hidden="true"></i> ' . trans('profile.submitProfileButton'),
                                                                  array(
-                                                                    'class'             => 'btn btn-success start-hidden',
+                                                                    'class'             => 'btn btn-success disabled',
                                                                     'id'                => 'account_save_trigger',
                                                                     'disabled'          => true,
                                                                     'type'              => 'button',
@@ -436,7 +437,11 @@
         });
 
         $('#user_basics_form').on('keyup change', 'input, select, textarea', function(){
-            $('#account_save_trigger').attr('disabled', false).show();
+            $('#account_save_trigger').attr('disabled', false).removeClass('disabled').show();
+        });
+
+        $('#user_profile_form').on('keyup change', 'input, select, textarea', function(){
+            $('#confirmFormSave').attr('disabled', false).removeClass('disabled').show();
         });
 
         $('#checkConfirmDelete').change(function() {

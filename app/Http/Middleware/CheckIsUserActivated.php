@@ -37,7 +37,7 @@ class CheckIsUserActivated
                 'welcome',
             ];
 
-            if (!in_array($currentRoute, $routesAllowed)) {
+            if (! in_array($currentRoute, $routesAllowed)) {
                 if ($user && $user->activated != 1) {
                     Log::info('Non-activated user attempted to visit '.$currentRoute.'. ', [$user]);
 
@@ -61,7 +61,7 @@ class CheckIsUserActivated
 
             if (in_array($currentRoute, $routesAllowed)) {
                 if ($user && $user->activated == 1) {
-                    Log::info('Activated user attempted to visit '.$currentRoute.'. ', [$user]);
+                    // Log::info('Activated user attempted to visit '.$currentRoute.'. ', [$user]);
 
                     if ($user->isAdmin()) {
                         return redirect('home');
@@ -70,7 +70,7 @@ class CheckIsUserActivated
                     return redirect('home');
                 }
 
-                if (!$user) {
+                if (! $user) {
                     Log::info('Non registered visit to '.$currentRoute.'. ');
 
                     return redirect()->route('welcome');
