@@ -8,9 +8,9 @@
         <title>{{ config('app.name') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="fonts.gstatic.com/" crossorigin>
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Raleway:100,600" crossorigin>
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css" crossorigin>
+        <!-- <link rel="preconnect" href="fonts.gstatic.com/" crossorigin>
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Raleway:100,600" crossorigin> -->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css" crossorigin> -->
 
         <!-- Styles -->
         <style>
@@ -45,6 +45,7 @@
 
             .content {
                 text-align: center;
+                text-transform: uppercase;
             }
 
             .title {
