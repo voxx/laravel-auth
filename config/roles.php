@@ -69,7 +69,20 @@ return [
             'allowed'       => true,
         ],
     ],
+    /*
+    |--------------------------------------------------------------------------
+    | Default Migrations
+    |--------------------------------------------------------------------------
+    |
+    | These are the default package migrations. If you publish the migrations
+    | to your project, then this is not necessary and should be disabled. This
+    | will enable our default migrations.
+    |
+    */
 
+    'defaultMigrations' => [
+        'enabled'        => env('ROLES_MIGRATION_DEFAULT_ENABLED', false),
+    ],
     /*
     |--------------------------------------------------------------------------
     | Default Seeds
@@ -142,7 +155,7 @@ return [
     'tooltipsEnabled'               => env('ROLES_GUI_TOOLTIPS_ENABLED', true),
 
     // jQuery
-    'enablejQueryCDN'               => env('ROLES_GUI_JQUERY_CDN_ENABLED', true), // You may need to change this if you compile and include jquery
+    'enablejQueryCDN'               => env('ROLES_GUI_JQUERY_CDN_ENABLED', true),
     'JQueryCDN'                     => env('ROLES_GUI_JQUERY_CDN_URL', 'https://code.jquery.com/jquery-3.5.1.min.js'),
 
     // Selectize JS
@@ -182,11 +195,11 @@ return [
 
     // User Permissions or Role needed to create a new role
     'rolesAPICreateNewRolesMiddlewareType'   => env('ROLES_API_CREATE_ROLE_MIDDLEWARE_TYPE', 'role'), //permissions or roles
-    'rolesAPICreateNewRolesMiddleware'       => env('ROLES_API_CREATE_ROLE_MIDDLEWARE_TYPE', 'admin'), // admin, XXX. ... or perms.XXX
+    'rolesAPICreateNewRolesMiddleware'       => env('ROLES_API_CREATE_ROLE_MIDDLEWARE', 'admin'), // admin, XXX. ... or perms.XXX
 
     // User Permissions or Role needed to create a new permission
     'rolesAPICreateNewPermissionMiddlewareType'  => env('ROLES_API_CREATE_PERMISSION_MIDDLEWARE_TYPE', 'role'), //permissions or roles
-    'rolesAPICreateNewPermissionsMiddleware'     => env('ROLES_API_CREATE_PERMISSION_MIDDLEWARE_TYPE', 'admin'), // admin, XXX. ... or perms.XXX
+    'rolesAPICreateNewPermissionsMiddleware'     => env('ROLES_API_CREATE_PERMISSION_MIDDLEWARE', 'admin'), // admin, XXX. ... or perms.XXX
 
     /*
     |--------------------------------------------------------------------------
